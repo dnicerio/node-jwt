@@ -2,6 +2,7 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
+const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const authRoutes = require('./routes/authRoutes');
 
@@ -12,6 +13,7 @@ const PORT = process.env.PORT || 8080;
 // middleware
 app.use(express.static('public'));
 app.use(express.json());
+app.use(morgan('dev'));
 app.use(cookieParser());
 
 // view engine
@@ -29,20 +31,3 @@ app.get('/smoothies', (req, res) => res.render('smoothies'));
 
 // authRoutes
 app.use(authRoutes);
-
-// cookies
-app.get('/set-cookies', (req, res) => {
-  // res.setHeader('Set-Cookie', 'newUser=true');
-
-  res.cookie('newUser', false);
-  res.cookie('isEmployee', true, { maxAge: 1000 * 60 * 60 * 24, httpOnly: true });
-
-  res.send('You got a cookie');
-});
-
-app.get('/read-cookies', (req, res) => {
-  const cookies = req.cookies;
-  console.log(cookies);
-
-  res.json(cookies);
-})

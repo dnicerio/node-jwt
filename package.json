@@ -1,7 +1,7 @@
 {
   "name": "node-express-jwt-auth",
   "version": "1.0.0",
-  "description": "",
+  "description": "Smoothies app built with Node.js, Express.js, MongoDB and EJS. Includes server side login & sign up validation, bcrypt for hashing passwords and JWT for auth.",
   "main": "app.js",
   "dependencies": {
     "bcrypt": "^5.0.0",

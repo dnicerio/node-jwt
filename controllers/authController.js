@@ -33,13 +33,13 @@ const handleErrors = (err) => {
   return errors;
 }
 
-// jsonwebtoken
+// create jsonwebtoken
 const maxAge = 3 * 24 * 60 * 60;
 const createToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: maxAge });
 }
 
-// signup_get, signup_post, login_get, login_post
+// signup_get, signup_post, login_get, login_post, logout_get
 signup_get = (req, res) => {
   res.render('signup');
 }
